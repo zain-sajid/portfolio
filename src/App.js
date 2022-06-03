@@ -2,7 +2,6 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import background from './pictures/docs-dark@tinypng.a8984b7fb44a4f8232d04de50220ab31.png';
-import hand from './pictures/hand.png';
 
 function App() {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
