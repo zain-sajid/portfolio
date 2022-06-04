@@ -13,7 +13,7 @@ function Homepage() {
           <img
             src={background}
             alt="Background gradient"
-            className="w-[90rem] flex-none max-w-none hidden dark:block"
+            className="w-[90rem] flex-none max-w-none hidden block"
           />
         </div>
       </div>
@@ -49,6 +49,7 @@ function Homepage() {
           className="z-20 w-2/5 object-contain drop-shadow-lg"
           src={avatar}
           alt="Avatar"
+          loading="lazy"
         />
       </div>
     </div>
