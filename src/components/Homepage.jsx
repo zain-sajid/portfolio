@@ -12,8 +12,8 @@ function Homepage() {
         <div className="w-[108rem] flex-none flex justify-end">
           <img
             src={background}
-            alt="Background gradient"
-            className="w-[90rem] flex-none max-w-none hidden block"
+            alt="Background"
+            className="w-[90rem] flex-none max-w-none block"
           />
         </div>
       </div>
