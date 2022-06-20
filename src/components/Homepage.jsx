@@ -18,7 +18,8 @@ function Homepage() {
         </div>
       </div>
 
-      <div className="flex mx-auto max-w-6xl mt-16">
+      {/* Landing Page */}
+      <div className="flex mx-auto w-4/5 mt-16">
         <div className="lg:pt-24 pt-10">
           <h1 className="text-white font-extrabold text-3xl md:text-5xl tracking-tight">
             Hey there! I'm <span className="text-sky-400 ">Zain Sajid.</span>
@@ -26,7 +27,7 @@ function Homepage() {
             developer 💻 based in{' '}
             <span className="text-sky-400 ">Islamabad.</span>
           </h1>
-          <div className="flex mt-8 gap-x-4">
+          <div className="flex mt-4 gap-x-4">
             <a
               href="https://www.upwork.com/freelancers/~01cb170fe0dbb578ea"
               className="w-3/40"
@@ -51,6 +52,20 @@ function Homepage() {
           alt="Avatar"
           loading="lazy"
         />
+      </div>
+
+      {/* About */}
+      <div className="w-4/5 mx-auto m-40">
+        <h1 className="text-white font-extrabold text-5xl">About</h1>
+        <p className="text-white text-lg mt-4">
+          A student at NUST, Islamabad pursuing a major in Software Engineering
+          currently exploring different fields in Computer Science such as Web
+          Development and Machine Learning as well as learning creative skills
+          such as Video Editing and Graphic Design. I try to find the
+          opportunity to learn in every situation and strongly believe that
+          learning is a continuous process. I love networking and collaborating
+          with people as it allows me learn from them and grow as a person.
+        </p>
       </div>
     </div>
   );
