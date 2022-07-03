@@ -1,4 +1,3 @@
-import About from './About';
 import background from '../images/background.png';
 import avatar from '../images/avatar.png';
 import upwork from '../images/upwork.svg';
