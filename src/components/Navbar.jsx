@@ -1,6 +1,5 @@
-import React from 'react';
-import logo from '../pictures/logo.svg';
 import { useState, useEffect } from 'react';
+import logo from '../images/logo.svg';
 
 function Navbar() {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
