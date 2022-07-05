@@ -6,7 +6,7 @@ import github from '../images/github.svg';
 
 function Homepage() {
   return (
-    <div className="container mx-auto mt-16 px-8">
+    <div className="container flex justify-center mx-auto px-8 h-[90vh]">
       {/* Background */}
       <div className="absolute z-20 top-0 inset-x-0 flex justify-center overflow-hidden pointer-events-none">
         <div className="w-[108rem] flex-none flex justify-end">
@@ -19,10 +19,11 @@ function Homepage() {
       </div>
 
       {/* Landing Page */}
-      <div className="flex items-center mx-auto w-3/4">
-        <div className="">
-          <div className="text-white font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight">
-            Hey there! I'm <span className="text-sky-400 ">Zain Sajid.</span>
+      <div className="flex items-center w-3/4 mb-16">
+        <div className="container">
+          <div className="text-white font-extrabold text-4xl sm:text-5xl tracking-tight">
+            Hey there! 👋🏼
+            <br /> I'm <span className="text-sky-400 ">Zain Sajid.</span>
             <br />A <span className="text-sky-400 ">full-stack </span>
             developer 💻 based in{' '}
             <span className="text-sky-400 ">Islamabad.</span>
@@ -55,7 +56,7 @@ function Homepage() {
           </div>
         </div>
         <img
-          className="z-20 w-2/5 object-contain drop-shadow-lg hidden sm:block"
+          className="z-20 w-2/5 object-contain drop-shadow-lg hidden lg:block"
           src={avatar}
           alt="Avatar"
           loading="lazy"

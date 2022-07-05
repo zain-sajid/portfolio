@@ -22,7 +22,7 @@ function Navbar() {
     <nav
       className={`${
         isScrolled ? 'bg-slate-900/75' : 'bg-transparent'
-      } navbar-top sticky top-0 z-40 backdrop-blur border-b border-slate-50/[0.06] transition-colors`}
+      } sticky top-0 z-40 backdrop-blur border-b border-slate-50/[0.06]`}
       onScroll={handleScroll}
     >
       <div className="max-w-7xl mx-auto px-8">
