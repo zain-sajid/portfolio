@@ -14,9 +14,11 @@ import tailwind from '../images/tailwind.svg';
 
 function About() {
   return (
-    <div className="flex flex-col justify-center w-3/4 mx-auto my-16 h-[90vh]">
-      <h1 className="text-sky-400 font-extrabold text-5xl">About</h1>
-      <p className="text-white text-xl mt-4">
+    <div className="flex flex-col justify-center w-3/4 mx-auto my-16 sm:h-[90vh]">
+      <h1 className="text-sky-400 font-extrabold text-4xl sm:text-5xl">
+        About
+      </h1>
+      <p className="text-white text-lg sm:text-xl mt-4">
         I'm a software developer and student at the{' '}
         <span className="font-bold">
           National University of Sciences and Technology (NUST), Islamabad
@@ -30,10 +32,10 @@ function About() {
           easy to use, scalable and easy to integrate.
         </span>
       </p>
-      <div className="text-white text-2xl font-bold mt-14">
+      <div className="text-white text-xl sm:text-2xl font-bold mt-14">
         A few technologies that I enjoy working with
       </div>
-      <div className="mt-2 flex flex-wrap gap-3">
+      <div className="mt-4 flex flex-wrap justify-center gap-3">
         <img
           src={react}
           alt="React"
@@ -97,7 +99,7 @@ function About() {
         <img
           src={tailwind}
           alt="tailwind"
-          className="drop-shadow-lg object-contain w-32"
+          className="drop-shadow-lg object-contain py-4 w-32"
         />
       </div>
     </div>
