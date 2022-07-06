@@ -1,11 +1,105 @@
+import react from '../images/react.svg';
+import nodejs from '../images/nodejs.svg';
+import express from '../images/express.svg';
+import nextjs from '../images/nextjs.svg';
+import mongodb from '../images/mongodb.svg';
+import graphql from '../images/graphql.svg';
+import git from '../images/git.svg';
+import javascript from '../images/javascript.svg';
+import html from '../images/html.svg';
+import css from '../images/css.svg';
+import sass from '../images/sass.svg';
+import bootstrap from '../images/bootstrap.svg';
+import tailwind from '../images/tailwind.svg';
+
 function About() {
   return (
-    <div className="w-4/5 mx-auto my-16">
+    <div className="w-3/4 mx-auto my-16">
       <h1 className="text-sky-400 font-extrabold text-5xl">About</h1>
-      <p className="text-white text-xl font-medium mt-4">
-        I am a student at the National University of Sciences and Technology in
-        Islamabad, Pakistan.
+      <p className="text-white text-xl mt-4">
+        I'm a software developer and student at the{' '}
+        <span className="font-bold">
+          National University of Sciences and Technology (NUST), Islamabad
+        </span>{' '}
+        pursuing a major in{' '}
+        <span className="font-bold">Software Engineering.</span> I love working
+        with the lastest tools and technologies for both the frontend and
+        backend to solve challenging problems. Currently, I'm focused on
+        learning how to design and build great frontend applications that are{' '}
+        <span className="font-bold">
+          easy to use, scalable and easy to integrate.
+        </span>
       </p>
+      <div className="text-white text-2xl mt-4 font-bold">
+        A few technologies that I enjoy working with
+      </div>
+      <div className="mt-2 flex flex-wrap gap-3">
+        <img
+          src={react}
+          alt="React"
+          className="drop-shadow-lg object-contain"
+        />
+        <img
+          src={nodejs}
+          alt="Node.js"
+          className="drop-shadow-lg object-contain"
+        />
+        <img
+          src={express}
+          alt="Express"
+          className="drop-shadow-lg object-contain pt-4"
+        />
+        <img
+          src={nextjs}
+          alt="nextjs"
+          className="drop-shadow-lg object-contain w-20 pt-2"
+        />
+        <img
+          src={mongodb}
+          alt="MongoDB"
+          className="drop-shadow-lg object-contain w-40"
+        />
+        <img
+          src={graphql}
+          alt="graphql"
+          className="drop-shadow-lg object-contain w-12"
+        />
+        <img
+          src={git}
+          alt="git"
+          className="drop-shadow-lg object-contain w-12"
+        />
+        <img
+          src={javascript}
+          alt="javascript"
+          className="drop-shadow-lg object-contain w-10"
+        />
+        <img
+          src={html}
+          alt="html"
+          className="drop-shadow-lg object-contain w-12"
+        />
+        <img
+          src={css}
+          alt="css"
+          className="drop-shadow-lg object-contain w-12 -ml-2"
+        />
+        <img
+          src={sass}
+          alt="sass"
+          className="drop-shadow-lg object-contain w-20 -ml-4 -mr-4"
+        />
+        <img
+          src={bootstrap}
+          alt="bootstrap"
+          className="drop-shadow-lg object-contain w-12"
+        />
+        <img
+          src={tailwind}
+          alt="tailwind"
+          className="drop-shadow-lg object-contain w-32"
+        />
+      </div>
     </div>
   );
 }

@@ -10,7 +10,7 @@ function Navbar() {
   }, []);
 
   function handleScroll() {
-    const nav = document.querySelector('.navbar-top');
+    const nav = document.querySelector('.navbar');
     if (window.scrollY > nav.offsetHeight) {
       setIsScrolled(true);
     } else {
@@ -22,7 +22,7 @@ function Navbar() {
     <nav
       className={`${
         isScrolled ? 'bg-slate-900/75' : 'bg-transparent'
-      } sticky top-0 z-40 backdrop-blur border-b border-slate-50/[0.06]`}
+      } navbar sticky top-0 z-40 backdrop-blur border-b border-slate-50/[0.06] transition-colors duration-500`}
       onScroll={handleScroll}
     >
       <div className="max-w-7xl mx-auto px-8">
