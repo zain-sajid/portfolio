@@ -14,7 +14,7 @@ import tailwind from '../images/tailwind.svg';
 
 function About() {
   return (
-    <div className="w-3/4 mx-auto my-16">
+    <div className="flex flex-col justify-center w-3/4 mx-auto my-16 h-[90vh]">
       <h1 className="text-sky-400 font-extrabold text-5xl">About</h1>
       <p className="text-white text-xl mt-4">
         I'm a software developer and student at the{' '}
@@ -30,7 +30,7 @@ function About() {
           easy to use, scalable and easy to integrate.
         </span>
       </p>
-      <div className="text-white text-2xl mt-4 font-bold">
+      <div className="text-white text-2xl font-bold mt-14">
         A few technologies that I enjoy working with
       </div>
       <div className="mt-2 flex flex-wrap gap-3">
