@@ -31,9 +31,7 @@ function About() {
         with the lastest tools and technologies for both the frontend and
         backend to solve challenging problems. Currently, I'm focused on
         learning how to design and build great frontend applications that are{' '}
-        <span className="font-bold">
-          easy to use, scalable and easy to integrate.
-        </span>
+        <span className="font-bold">easy to use and integrate.</span>
       </p>
       <div className="text-white text-xl sm:text-2xl font-bold mt-14">
         A few technologies that I enjoy working with

@@ -42,7 +42,7 @@ function Navbar() {
                 <a className=" hover:text-sky-400 px-3 py-2" href="/#projects">
                   Projects
                 </a>
-                <a className=" hover:text-sky-400 px-3 py-2" href="/#">
+                <a className=" hover:text-sky-400 px-3 py-2" href="/#contact">
                   Contact
                 </a>
               </div>
@@ -80,19 +80,19 @@ function Navbar() {
           </a>
           <a
             className="text-gray-300 dark:text-slate-200 block px-3 py-2 rounded-md text-base font-medium"
-            href="/#"
+            href="/#about"
           >
-            Gallery
+            About
           </a>
           <a
             className="text-gray-300 dark:text-slate-200 block px-3 py-2 rounded-md text-base font-medium"
-            href="/#"
+            href="/#projects"
           >
-            Content
+            Projects
           </a>
           <a
             className="text-gray-300 dark:text-slate-200 block px-3 py-2 rounded-md text-base font-medium"
-            href="/#"
+            href="/#contact"
           >
             Contact
           </a>
