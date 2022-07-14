@@ -1,8 +1,8 @@
 import background from '../images/background.png';
 import avatar from '../images/avatar.png';
-import upwork from '../images/upwork.svg';
-import linkedin from '../images/linkedin.svg';
-import github from '../images/github.svg';
+import upwork from '../images/icons/upwork.svg';
+import linkedin from '../images/icons/linkedin.svg';
+import github from '../images/icons/github.svg';
 
 function Homepage() {
   return (
@@ -22,7 +22,7 @@ function Homepage() {
       <div className="flex items-center w-3/4 mb-16">
         <div className="container">
           <div className="text-white font-extrabold text-4xl sm:text-5xl tracking-tight">
-            Hey there! 👋🏼
+            Hey there! 👋🏻
             <br /> I'm <span className="text-sky-400 ">Zain Sajid.</span>
             <br />A <span className="text-sky-400 ">full-stack </span>
             developer 💻 based in{' '}

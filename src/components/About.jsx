@@ -1,24 +1,27 @@
-import react from '../images/react.svg';
-import nodejs from '../images/nodejs.svg';
-import express from '../images/express.svg';
-import nextjs from '../images/nextjs.svg';
-import mongodb from '../images/mongodb.svg';
-import graphql from '../images/graphql.svg';
-import git from '../images/git.svg';
-import javascript from '../images/javascript.svg';
-import html from '../images/html.svg';
-import css from '../images/css.svg';
-import sass from '../images/sass.svg';
-import bootstrap from '../images/bootstrap.svg';
-import tailwind from '../images/tailwind.svg';
+import react from '../images/icons/react.svg';
+import nodejs from '../images/icons/nodejs.svg';
+import express from '../images/icons/express.svg';
+import nextjs from '../images/icons/nextjs.svg';
+import mongodb from '../images/icons/mongodb.svg';
+import graphql from '../images/icons/graphql.svg';
+import git from '../images/icons/git.svg';
+import javascript from '../images/icons/javascript.svg';
+import html from '../images/icons/html.svg';
+import css from '../images/icons/css.svg';
+import sass from '../images/icons/sass.svg';
+import bootstrap from '../images/icons/bootstrap.svg';
+import tailwind from '../images/icons/tailwind.svg';
 
 function About() {
   return (
-    <div className="flex flex-col justify-center w-3/4 mx-auto my-16 sm:h-[90vh]">
-      <h1 className="text-sky-400 font-extrabold text-4xl sm:text-5xl">
+    <section
+      id="about"
+      className="flex flex-col justify-center w-3/4 mx-auto my-16 sm:h-[90vh]"
+    >
+      <h1 className="text-sky-400 font-extrabold text-4xl sm:text-5xl mb-4">
         About
       </h1>
-      <p className="text-white text-lg sm:text-xl mt-4">
+      <p className="text-white text-lg sm:text-xl">
         I'm a software developer and student at the{' '}
         <span className="font-bold">
           National University of Sciences and Technology (NUST), Islamabad
@@ -102,7 +105,7 @@ function About() {
           className="drop-shadow-lg object-contain py-4 w-32"
         />
       </div>
-    </div>
+    </section>
   );
 }
 

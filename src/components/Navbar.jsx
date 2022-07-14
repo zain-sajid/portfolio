@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import logo from '../images/logo.svg';
+import logo from '../images/icons/logo.svg';
 
 function Navbar() {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -32,29 +32,17 @@ function Navbar() {
               <img className="h-8 w-16 pb-1" src={logo} alt="Workflow" />
             </a>
             <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <a
-                  className="text-slate-200  hover:text-sky-400 px-3 py-2 rounded-md text-sm font-semibold"
-                  href="/#"
-                >
+              <div className="ml-10 flex items-baseline space-x-4 text-slate-200 font-semibold text-sm">
+                <a className="hover:text-sky-400 px-3 py-2" href="/#">
                   Home
                 </a>
-                <a
-                  className="text-slate-200  hover:text-sky-400 px-3 py-2 rounded-md text-sm font-semibold"
-                  href="/#"
-                >
+                <a className=" hover:text-sky-400 px-3 py-2" href="/#about">
                   About
                 </a>
-                <a
-                  className="text-slate-200  hover:text-sky-400 px-3 py-2 rounded-md text-sm font-semibold"
-                  href="/#"
-                >
+                <a className=" hover:text-sky-400 px-3 py-2" href="/#projects">
                   Projects
                 </a>
-                <a
-                  className="text-slate-200  hover:text-sky-400 px-3 py-2 rounded-md text-sm font-semibold"
-                  href="/#"
-                >
+                <a className=" hover:text-sky-400 px-3 py-2" href="/#">
                   Contact
                 </a>
               </div>
@@ -63,7 +51,7 @@ function Navbar() {
 
           <div className="-mr-2 flex md:hidden">
             <button
-              className="text-gray-800 dark:text-white inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
+              className="text-gray-800 dark:text-white inline-flex items-center justify-center p-2 focus:outline-none"
               onClick={() => {
                 setIsNavExpanded(!isNavExpanded);
               }}
