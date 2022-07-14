@@ -8,6 +8,11 @@ module.exports = {
       width: {
         '3/40': '7.5%',
       },
+      colors: {
+        navy: {
+          DEFAULT: '#0f172a',
+        },
+      },
     },
   },
   plugins: [],

@@ -41,12 +41,12 @@ function Projects() {
   return (
     <section
       id="projects"
-      className="flex flex-col justify-center w-3/4 mx-auto my-16 sm:h-[90vh]"
+      className="flex flex-col justify-center w-3/4 mx-auto my-16 h-[90vh]"
     >
       <h1 className="text-sky-400 font-extrabold text-4xl sm:text-5xl mb-8">
         Projects
       </h1>
-      <div className="flex flex-wrap justify-between gap-y-4">
+      <div className="flex flex-wrap justify-between gap-y-5">
         {projectsArr.map((project) => {
           return (
             <Project
