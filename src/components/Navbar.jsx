@@ -75,24 +75,36 @@ function Navbar() {
           <a
             className="text-gray-300 dark:hover:text-slate-200 block px-3 py-2 rounded-md text-base font-medium"
             href="/#"
+            onClick={() => {
+              setIsNavExpanded(!isNavExpanded);
+            }}
           >
             Home
           </a>
           <a
             className="text-gray-300 dark:text-slate-200 block px-3 py-2 rounded-md text-base font-medium"
             href="/#about"
+            onClick={() => {
+              setIsNavExpanded(!isNavExpanded);
+            }}
           >
             About
           </a>
           <a
             className="text-gray-300 dark:text-slate-200 block px-3 py-2 rounded-md text-base font-medium"
             href="/#projects"
+            onClick={() => {
+              setIsNavExpanded(!isNavExpanded);
+            }}
           >
             Projects
           </a>
           <a
             className="text-gray-300 dark:text-slate-200 block px-3 py-2 rounded-md text-base font-medium"
             href="/#contact"
+            onClick={() => {
+              setIsNavExpanded(!isNavExpanded);
+            }}
           >
             Contact
           </a>
