@@ -81,8 +81,6 @@ const { title, description, image = "/nano.png" } = Astro.props;
 </script>
 
 <script is:inline>
-  import { log } from "node_modules/astro/dist/core/logger/core";
-
   function init() {
     preloadTheme();
     onScroll();
@@ -134,8 +132,6 @@ const { title, description, image = "/nano.png" } = Astro.props;
   }
 
   function onScroll() {
-    console.log("onScroll");
-    
     if (window.scrollY > 0) {
       document.documentElement.classList.add("scrolled");
     } else {
