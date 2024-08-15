@@ -2,7 +2,7 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "strictNullChecks": true,
-    "baseUrl": "/Users/apple/Documents/Programming/astro-portfolio",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
