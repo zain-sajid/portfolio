@@ -1,4 +1,8 @@
-Here's a thoughtful blog post on why building software is challenging:
+---
+title: 'Getting started'
+description: 'Hit the ground running.'
+date: 'Mar 22 2024'
+---
 
 # Why Building Software is Hard
 
