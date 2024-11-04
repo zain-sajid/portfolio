@@ -1,10 +1,7 @@
 ---
-title: 'Getting started'
-description: 'Hit the ground running.'
+title: 'Why building software is hard'
 date: 'Mar 22 2024'
 ---
-
-# Why Building Software is Hard
 
 Software development seems deceptively simple on the surface - after all, we're just telling computers what to do, right? Yet anyone who has built software knows that it's far more complex than it appears. Let's explore why creating software remains one of the most challenging creative endeavors.
 
