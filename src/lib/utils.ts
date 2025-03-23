@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import dayjs from 'dayjs';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -21,9 +22,9 @@ export function readingTime(html: string) {
 }
 
 export function dateRange(startDate: Date, endDate?: Date | string): string {
-  const startMonth = startDate.toLocaleString('default', { month: 'short' });
-  const startYear = startDate.getFullYear().toString();
-  console.log(startMonth, startYear);
+  const start = dayjs(startDate);
+  const startMonth = start.format('MMMM');
+  const startYear = start.format('YYYY');
 
   let endMonth;
   let endYear;
@@ -33,8 +34,9 @@ export function dateRange(startDate: Date, endDate?: Date | string): string {
       endMonth = '';
       endYear = endDate;
     } else {
-      endMonth = endDate.toLocaleString('default', { month: 'short' });
-      endYear = endDate.getFullYear().toString();
+      const end = dayjs(endDate);
+      endMonth = end.format('MMMM');
+      endYear = end.format('YYYY');
     }
   }
 
