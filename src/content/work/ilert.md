@@ -1,7 +1,7 @@
 ---
 company: 'ilert'
 role: 'Frontend Developer - Working Student'
-dateStart: '01/11/2024'
+dateStart: '12/01/2024'
 dateEnd: 'Present'
 ---
 

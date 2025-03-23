@@ -1,7 +1,7 @@
 ---
 company: 'Study Mind'
 role: 'Full Stack Developer'
-dateStart: '01/12/2022'
+dateStart: '12/01/2022'
 dateEnd: '01/01/2024'
 ---
 

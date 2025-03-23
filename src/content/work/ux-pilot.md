@@ -2,7 +2,7 @@
 company: 'UX Pilot'
 role: 'Software Developer'
 dateStart: '01/01/2024'
-dateEnd: '10/03/2024'
+dateEnd: '03/10/2024'
 ---
 
 - Worked with the Figma Plugin API to develop the core functionality of transforming web components
