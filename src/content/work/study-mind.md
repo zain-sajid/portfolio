@@ -1,8 +1,8 @@
 ---
 company: 'Study Mind'
 role: 'Full Stack Developer'
-dateStart: '12/01/2022'
-dateEnd: '01/01/2024'
+dateStart: '2022-12-01'
+dateEnd: '2024-01-01'
 ---
 
 - Responsible for the design, implementation, and deployment of multiple features for an online tutoring

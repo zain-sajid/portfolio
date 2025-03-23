@@ -1,8 +1,8 @@
 ---
 company: 'Adveni'
 role: 'Full Stack Developer'
-dateStart: '03/10/2024'
-dateEnd: '09/10/2024'
+dateStart: '2024-03-10'
+dateEnd: '2024-09-10'
 ---
 
 - Worked closely with the founders to develop a SaaS application for user analytics and experimentation
