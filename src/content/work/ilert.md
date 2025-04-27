@@ -2,7 +2,7 @@
 company: 'ilert'
 role: 'Frontend Developer - Working Student'
 dateStart: '2024-12-01'
-dateEnd: 'Present'
+dateEnd: '2025-04-30'
 companyURL: 'https://www.ilert.com'
 ---
 
