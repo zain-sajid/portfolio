@@ -1,6 +1,6 @@
 ---
 title: 'Why building software is hard'
-description: 'A blog exploring some of the common reasons that making building great software products difficult'
+description: 'Exploring why building good software is challenging'
 date: 'Mar 22 2024'
 ---
 

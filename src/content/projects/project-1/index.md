@@ -1,79 +1,58 @@
 ---
-title: 'Astro Sphere'
-description: 'Portfolio and blog build with astro.'
+title: 'Vecto'
+description: 'Scan vulnerabilities in your web applications easily'
 date: 'Mar 18 2024'
-demoURL: 'https://astro-sphere-demo.vercel.app'
-repoURL: 'https://github.com/markhorn-dev/astro-sphere'
+demoURL: 'https://vecto-web.vercel.app'
+repoURL: 'https://github.com/zain-sajid/vecto-web'
 ---
 
-![Astro Sphere Lighthouse Score](/astro-sphere.jpg)
+For the final year project of my bachelors degree at NUST, our group decided to build a web application for scanning vulnerabilities in our applications as developers since we were interested in cybersecuriy and wanted to explore this domain. The existing solutions on the market were not easy to use for developers so we focused on designing an easy to use interface while providing support for customizability.
 
-Astro Sphere is a static, minimalist, lightweight, lightning fast portfolio and blog theme based on my personal website.
+I was responsible for designing and developing the frontend of the application while also writing some of the backend APIs in Go, Gin and GORM.
 
-It is primarily Astro, Tailwind and Typescript, with a very small amount of SolidJS for stateful components.
+---
 
-## 🚀 Deploy your own
+## Features 🔥
 
-<div class="flex gap-2">
-  <a target="_blank" aria-label="Deploy with Vercel" href="https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-sphere">
-    <img src="/deploy_vercel.svg" />
-  </a>
-  <a target="_blank" aria-label="Deploy with Netlify" href="https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-sphere">
-    <img src="/deploy_netlify.svg" />
-  </a>
-</div>
+- Easily submit a URL to be scanned for common web vulnerabilities like SQL Injection, XSS, and outdated libraries.
+- Get detailed scan reports, including severity levels, affected endpoints, and recommended fixes.
+- User authentication and secure dashboard to view historical scan results.
+- Ability to create your own templates for testing vulnerabilities
 
-## 📋 Features
+---
 
-- ✅ 100/100 Lighthouse performance
-- ✅ Responsive
-- ✅ Accessible
-- ✅ SEO-friendly
-- ✅ Typesafe
-- ✅ Minimal style
-- ✅ Light/Dark Theme
-- ✅ Animated UI
-- ✅ Tailwind styling
-- ✅ Auto generated sitemap
-- ✅ Auto generated RSS Feed
-- ✅ Markdown support
-- ✅ MDX Support (components in your markdown)
-- ✅ Searchable content (posts and projects)
+## Stack 🛠
 
-## 💯 Lighthouse score
+For this project, I combined a modern frontend with a powerful backend:
 
-![Astro Sphere Lighthouse Score](/lighthouse.png)
+- **Frontend**:
+  - Next.js
+  - Tailwind CSS
+- **Backend**:
+  - Golang
+  - Gin
+  - GORM
+  - MySQL
+- **Infrastructure**:
+  - Vercel (Frontend Hosting)
+  - DigitalOcean (API Server and Database)
 
-## 🕊️ Lightweight
+I chose this architecture to keep the frontend fast and easily deployable, while giving the backend the flexibility and power needed for processing scans efficiently.
 
-All pages under 100kb (including fonts)
+---
 
-## ⚡︎ Fast
+## Results ✨
 
-Rendered in ~40ms on localhost
+The app launched successfully and was quickly adopted by a few developer communities for internal testing purposes.
 
-## 📄 Configuration
+Feedback highlighted how intuitive the UI was and how easy it was to get meaningful security insights without needing deep technical knowledge.
 
-The blog posts on the demo serve as the documentation and configuration.
+---
 
-## 💻 Commands
+## Challenges 🚧
 
-All commands are run from the root of the project, from a terminal:
+The biggest challenge was handling the asynchronous nature of running heavy vulnerability scans without blocking the API.
 
-Replace npm with your package manager of choice. `npm`, `pnpm`, `yarn`, `bun`, etc
+**Solution**: I implemented a queuing system with Goroutines and background workers in Go to offload scanning jobs while keeping the API responsive. Combined with careful API design and efficient database queries, this allowed scans to scale smoothly.
 
-| Command                   | Action                                            |
-| :------------------------ | :------------------------------------------------ |
-| `npm install`             | Installs dependencies                             |
-| `npm run dev`             | Starts local dev server at `localhost:4321`       |
-| `npm run sync`            | Generates TypeScript types for all Astro modules. |
-| `npm run build`           | Build your production site to `./dist/`           |
-| `npm run preview`         | Preview your build locally, before deploying      |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check`  |
-| `npm run astro -- --help` | Get help using the Astro CLI                      |
-| `npm run lint`            | Run ESLint                                        |
-| `npm run lint:fix`        | Auto-fix ESLint issues                            |
-
-## 🏛️ License
-
-MIT
+---

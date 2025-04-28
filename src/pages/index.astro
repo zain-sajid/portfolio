@@ -4,8 +4,8 @@ import Container from '@/components/Container.astro';
 import PageLayout from '@/layouts/PageLayout.astro';
 import ArrowCard from '@/components/ArrowCard.astro';
 import Link from '@/components/Link.astro';
-import { dateRange } from '@/lib/utils';
 import { SITE, HOME, SOCIALS } from '@/consts';
+import AccordionDemo from '@/components/AccordionDemo';
 
 const blog = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
@@ -61,33 +61,15 @@ const work = await Promise.all(
           <Link href="/work"> See all work </Link>
         </div>
 
-        <ul class="flex flex-col space-y-4">
-          {
-            work.map((entry) => (
-              <li>
-                <div class="flex flex-col gap-1">
-                  <div class="font-semibold text-black dark:text-white">
-                    {entry.data.companyURL ? (
-                      <a href={entry.data.companyURL} target="_blank" rel="noopener noreferrer" class="hover:underline">
-                        {entry.data.company}
-                      </a>
-                    ) : (
-                      entry.data.company
-                    )}
-                  </div>
-                  <div class="text-sm opacity-75">{entry.data.role}</div>
-                  <div class="text-sm opacity-75">
-                    {dateRange(entry.data.dateStart, entry.data.dateEnd)}
-                  </div>
-                </div>
-
-                <article>
-                  <entry.Content />
-                </article>
-              </li>
-            ))
-          }
-        </ul>
+        {
+          work.map((entry) => (
+            <AccordionDemo client:visible entry={entry}>
+              <article slot="content" class="[&>*]:mt-0">
+                <entry.Content />
+              </article>
+            </AccordionDemo>
+          ))
+        }
       </section>
 
       <section class="animate space-y-6">
