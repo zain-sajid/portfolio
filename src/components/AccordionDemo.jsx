@@ -5,6 +5,7 @@ import {
   AccordionTrigger
 } from '@/components/ui/accordion';
 import { dateRange } from '@/lib/utils';
+import { ExternalLink } from 'lucide-react';
 
 export function AccordionDemo({ entry, ...props }) {
   return (
@@ -18,9 +19,10 @@ export function AccordionDemo({ entry, ...props }) {
                   href={entry.data.companyURL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:underline"
+                  className="hover:underline flex items-center gap-1.5"
                 >
                   {entry.data.company}
+                  <ExternalLink className="w-4 h-4" />
                 </a>
               ) : (
                 entry.data.company
