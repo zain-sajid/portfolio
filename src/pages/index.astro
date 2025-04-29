@@ -6,6 +6,7 @@ import ArrowCard from '@/components/ArrowCard.astro';
 import Link from '@/components/Link.astro';
 import { SITE, HOME, SOCIALS } from '@/consts';
 import AccordionDemo from '@/components/AccordionDemo';
+import Arrow from '@/components/icons/Arrow.astro';
 
 const blog = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
@@ -112,6 +113,17 @@ const work = await Promise.all(
             hi, reach out on social media or send me an email.
           </p>
         </article>
+
+        <a
+          href="https://calendly.com/zainsajid/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="relative group w-fit flex pl-3 pr-8 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
+        >
+          <div class="text-sm">Book a call</div>
+          <Arrow class="size-4" />
+        </a>
+
         <ul class="flex flex-wrap gap-4">
           {
             SOCIALS.map((SOCIAL) => (
