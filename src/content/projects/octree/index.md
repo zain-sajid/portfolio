@@ -2,7 +2,7 @@
 title: 'Octree'
 description: 'AI LaTeX editor for everyone'
 date: 'May 14 2025'
-demoURL: 'https:/www.useoctree.com'
+demoURL: 'https://www.useoctree.com'
 usesAI: true
 ---
 
