@@ -7,7 +7,8 @@ type Props = {
 };
 
 const { entry } = Astro.props;
-const hasAI = entry.collection === 'projects' && entry.data.usesAI;
+const usesAI = entry.collection === 'projects' && entry.data.usesAI;
+const beta = entry.collection === 'projects' && entry.data.beta;
 ---
 
 <a
@@ -15,10 +16,17 @@ const hasAI = entry.collection === 'projects' && entry.data.usesAI;
   class="relative group flex flex-nowrap py-3 px-4 pr-10 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
 >
   {
-    hasAI && (
+    usesAI && (
       <div class="flex gap-0.5 items-center absolute top-0 -translate-y-1/2 right-2 bg-gradient-to-r from-[#783AFF] to-[#A161FF] text-white text-xs font-bold pl-1 pr-1.5 py-0.5 rounded-md z-20 outline outline-[#783AFF]/50 shadow-md">
         <Sparkles />
         uses AI
+      </div>
+    )
+  }
+  {
+    beta && (
+      <div class="flex gap-0.5 items-center absolute top-0 -translate-y-1/2 right-2 bg-[#E93E83] text-white text-xs font-bold pl-1 pr-1.5 py-0.5 rounded-md z-20 outline outline-[#E93E83]/50 shadow-md">
+       Beta
       </div>
     )
   }
