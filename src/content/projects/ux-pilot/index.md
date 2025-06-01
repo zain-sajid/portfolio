@@ -3,7 +3,6 @@ title: 'UX Pilot - Figma Plugin'
 description: 'Generate wireframes and code inside Figma using AI'
 date: 'Mar 15 2025'
 demoURL: 'https://www.figma.com/community/plugin/1257688030051249633/ux-pilot-ai-ui-generator-ai-wireframe-generator'
-usesAI: true
 ---
 
 ![UX Pilot](/ux-pilot.png)
