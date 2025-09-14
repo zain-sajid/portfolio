@@ -6,8 +6,6 @@ description: 'Explaining how I approach learning new things'
 date: 'Sep 03 2025'
 ---
 
-## On learning new stuff
-
 How people learn new things is always very interesting to me. I think being able to learn things quickly is a very important skill that helps in almost every aspect of life.
 
 The way I learn new things be it new tools or new concepts has kept changing over the years. I used to spend a lot of time just memorizing stuff in school but I realize now that I was never really good at it and it would take me a long time to learn anything.
