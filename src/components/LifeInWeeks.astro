@@ -1,0 +1,269 @@
+---
+interface Props {
+  birthDate: Date;
+}
+
+const { birthDate } = Astro.props;
+
+const birth = new Date(birthDate);
+const today = new Date();
+
+const birthMonth = birth.getMonth();
+const birthDay = birth.getDate();
+
+const diff = today.getTime() - birth.getTime();
+const elapsedYears = new Date(diff).getUTCFullYear() - 1970;
+
+const thisYearsBirthday = new Date(today.getFullYear(), birthMonth, birthDay);
+const isThisYearsBirthdayPassed =
+  today.getTime() >= thisYearsBirthday.getTime();
+const birthdayYearOffset = isThisYearsBirthdayPassed ? 0 : 1;
+
+const dateOfLastBirthday = new Date(
+  today.getFullYear() - birthdayYearOffset,
+  birthMonth,
+  birthDay
+);
+
+const elapsedDaysSinceLastBirthday = Math.floor(
+  (today.getTime() - dateOfLastBirthday.getTime()) / (1000 * 60 * 60 * 24)
+);
+
+const weeksLived =
+  elapsedYears * 52 + Math.floor(elapsedDaysSinceLastBirthday / 7);
+
+const lifeExpectancy = 80;
+const weeksPerYear = 52;
+const totalWeeks = lifeExpectancy * weeksPerYear;
+const weeksPerRow = weeksPerYear;
+const totalRows = lifeExpectancy;
+---
+
+<div class="life-in-weeks-container">
+  <h5 class="font-semibold text-black dark:text-white mb-4">
+    My Life in Weeks
+  </h5>
+  <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-6">
+    Each box represents one week of my life. I'm currently <strong
+      >{Math.floor(weeksLived / 52)} years old</strong
+    >, and if I live to 80, I have about <strong
+      >{Math.floor(totalWeeks - weeksLived)} weeks</strong
+    > left.
+  </p>
+
+  <div class="weeks-grid-wrapper">
+    <div class="age-labels">
+      {
+        Array.from({ length: 17 }, (_, i) => i * 5).map((age) => (
+          <div class="age-label" style={`top: ${(age / 80) * 100}%`}>
+            {age}
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="weeks-grid">
+      {
+        Array.from({ length: totalRows }, (_, row) => (
+          <div class="week-row">
+            {Array.from({ length: weeksPerRow }, (_, col) => {
+              const boxIndex = row * weeksPerRow + col;
+              const isLived = boxIndex < weeksLived;
+              const isCurrent = boxIndex === weeksLived;
+              return (
+                <div
+                  class:list={[
+                    'week-box',
+                    { lived: isLived },
+                    { current: isCurrent }
+                  ]}
+                  title={`Week ${boxIndex + 1} - Age ${Math.floor(boxIndex / 52)}`}
+                />
+              );
+            })}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="week-box lived"></div>
+      <span>Lived</span>
+    </div>
+    <div class="legend-item">
+      <div class="week-box current"></div>
+      <span>Current Week</span>
+    </div>
+    <div class="legend-item">
+      <div class="week-box"></div>
+      <span>Future</span>
+    </div>
+  </div>
+
+  <p class="attribution">
+    Based on the <a
+      href="https://waitbutwhy.com/2014/05/life-weeks.html"
+      target="_blank"
+      rel="noopener noreferrer">Your Life in Weeks</a
+    > post by Tim Urban, from <a
+      href="https://waitbutwhy.com/"
+      target="_blank"
+      rel="noopener noreferrer">Wait But Why</a
+    >.
+  </p>
+</div>
+
+<style>
+  .life-in-weeks-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .weeks-grid-wrapper {
+    position: relative;
+    padding: 0 0 0 40px;
+    margin-bottom: 20px;
+  }
+
+  .age-labels {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 35px;
+  }
+
+  .age-label {
+    position: absolute;
+    right: 5px;
+    font-size: 10px;
+    color: var(--muted-foreground);
+    transform: translateY(-50%);
+    font-family: monospace;
+  }
+
+  .weeks-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: transparent;
+    padding: 4px;
+    border-radius: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .week-row {
+    display: flex;
+    gap: 2px;
+    min-width: max-content;
+  }
+
+  .week-box {
+    width: 8px;
+    height: 8px;
+    border-radius: 1px;
+    background-color: hsl(var(--border));
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .week-box:hover {
+    transform: scale(1.5);
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .week-box.lived {
+    background-color: hsl(var(--primary));
+  }
+
+  .week-box.current {
+    background-color: #3b82f6;
+    box-shadow: 0 0 8px #3b82f6;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    padding: 12px;
+    background: hsl(var(--muted) / 0.3);
+    border-radius: 6px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: hsl(var(--foreground));
+  }
+
+  .legend-item .week-box {
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+  }
+
+  .attribution {
+    margin-top: 16px;
+    font-size: 13px;
+    color: hsl(var(--muted-foreground));
+    text-align: center;
+  }
+
+  .attribution a {
+    color: hsl(var(--foreground));
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+  }
+
+  .attribution a:hover {
+    color: hsl(var(--primary));
+  }
+
+  @media (max-width: 640px) {
+    .weeks-grid-wrapper {
+      padding-left: 30px;
+    }
+
+    .age-labels {
+      width: 25px;
+    }
+
+    .week-box {
+      width: 6px;
+      height: 6px;
+    }
+
+    .age-label,
+    .week-label {
+      font-size: 8px;
+    }
+
+    .legend {
+      gap: 12px;
+    }
+
+    .legend-item {
+      font-size: 12px;
+    }
+  }
+</style>
