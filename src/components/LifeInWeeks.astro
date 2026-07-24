@@ -39,15 +39,15 @@ const weeksPerRow = weeksPerYear;
 const totalRows = lifeExpectancy;
 ---
 
-<div class="life-in-weeks-container">
+<div class="life-in-weeks-container" data-birthdate={birth.toISOString()}>
   <h5 class="font-semibold text-black dark:text-white mb-4">
     My Life in Weeks
   </h5>
   <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-6">
     Each box represents one week of my life. I'm currently <strong
-      >{Math.floor(weeksLived / 52)} years old</strong
+      data-years>{Math.floor(weeksLived / 52)} years old</strong
     >, and if I live to 80, I have about <strong
-      >{Math.floor(totalWeeks - weeksLived)} weeks</strong
+      data-weeks-left>{Math.floor(totalWeeks - weeksLived)} weeks</strong
     > left.
   </p>
 
@@ -114,6 +114,29 @@ const totalRows = lifeExpectancy;
     >.
   </p>
 </div>
+
+<script>
+  // The build-time render goes stale on a static deploy; recompute on load.
+  const container = document.querySelector<HTMLElement>('.life-in-weeks-container');
+  if (container?.dataset.birthdate) {
+    const birth = new Date(container.dataset.birthdate);
+    const today = new Date();
+    const years = new Date(today.getTime() - birth.getTime()).getUTCFullYear() - 1970;
+    const lastBirthday = new Date(today.getFullYear(), birth.getMonth(), birth.getDate());
+    if (lastBirthday > today) lastBirthday.setFullYear(lastBirthday.getFullYear() - 1);
+    const days = Math.floor((today.getTime() - lastBirthday.getTime()) / 86400000);
+    const weeksLived = years * 52 + Math.floor(days / 7);
+
+    container.querySelectorAll('.weeks-grid .week-box').forEach((box, i) => {
+      box.classList.toggle('lived', i < weeksLived);
+      box.classList.toggle('current', i === weeksLived);
+    });
+    const yearsEl = container.querySelector('[data-years]');
+    if (yearsEl) yearsEl.textContent = `${years} years old`;
+    const weeksLeftEl = container.querySelector('[data-weeks-left]');
+    if (weeksLeftEl) weeksLeftEl.textContent = `${80 * 52 - weeksLived} weeks`;
+  }
+</script>
 
 <style>
   .life-in-weeks-container {
