@@ -1,0 +1,153 @@
+---
+import {
+  CalendarDays,
+  Clock,
+  Code,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin
+} from 'lucide-react';
+import Panel from '@/components/Panel.astro';
+import { SITE, SOCIALS } from '@/consts';
+
+const CURRENT_ROLE = {
+  role: "Master's Thesis",
+  company: 'SE RWTH',
+  url: 'https://www.se-rwth.de/'
+};
+
+const SOCIAL_ICONS: Record<string, typeof Github> = {
+  github: Github,
+  linkedin: Linkedin
+};
+
+const tile =
+  'flex size-6 shrink-0 items-center justify-center rounded-md border border-line bg-muted text-muted-foreground';
+const link = 'underline-offset-4 hover:underline';
+---
+
+<Panel flush>
+  <h2 class="sr-only">Overview</h2>
+
+  <div
+    class="pointer-events-none absolute inset-y-0 left-1/2 border-r border-dashed border-line max-sm:hidden"
+    aria-hidden="true"
+  >
+  </div>
+
+  <ul class="grid gap-x-4 gap-y-2.5 p-4 font-mono text-sm sm:grid-cols-2">
+    <li class="flex items-center gap-3">
+      <span class={tile}><Code className="size-3.5" /></span>
+      <span>
+        {CURRENT_ROLE.role}{' '}
+        <a
+          class={link}
+          href={CURRENT_ROLE.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @ {CURRENT_ROLE.company}
+        </a>
+      </span>
+    </li>
+    <li class="flex items-center gap-3">
+      <span class={tile}><MapPin className="size-3.5" /></span>
+      <a
+        class={link}
+        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.LOCATION)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {SITE.LOCATION}
+      </a>
+    </li>
+    <li class="flex items-center gap-3">
+      <span class={tile}><Clock className="size-3.5" /></span>
+      <span data-local-time={SITE.TIMEZONE}>
+        <span data-time>--:--</span>
+        <span data-offset class="text-muted-foreground"></span>
+      </span>
+    </li>
+    <li class="flex items-center gap-3">
+      <span class={tile}><Mail className="size-3.5" /></span>
+      <a class={link} href={`mailto:${SITE.EMAIL}`}>{SITE.EMAIL}</a>
+    </li>
+    <li class="flex items-center gap-3">
+      <span class={tile}><CalendarDays className="size-3.5" /></span>
+      <a class={link} href={SITE.CALL_URL} target="_blank" rel="noopener noreferrer">
+        Book a call
+      </a>
+    </li>
+    <li class="flex items-center gap-2">
+      {
+        SOCIALS.map((social) => {
+          const Icon = SOCIAL_ICONS[social.NAME];
+          return (
+            <a
+              href={social.HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${SITE.NAME} on ${social.NAME}`}
+              title={social.NAME}
+              class="flex size-6 items-center justify-center rounded-md border border-line bg-muted text-black/80 hover-glow transition hover:text-black dark:text-white/80 dark:hover:text-white"
+            >
+              {Icon ? <Icon className="size-3.5" /> : social.NAME}
+            </a>
+          );
+        })
+      }
+    </li>
+  </ul>
+</Panel>
+
+<script>
+  // Offset of a timezone from UTC in minutes, at the given instant
+  function utcOffset(timeZone: string, date: Date) {
+    const parts = Object.fromEntries(
+      new Intl.DateTimeFormat('en-US', {
+        timeZone,
+        hourCycle: 'h23',
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric'
+      })
+        .formatToParts(date)
+        .map((part) => [part.type, Number(part.value)])
+    );
+    const asUtc = Date.UTC(
+      parts.year,
+      parts.month - 1,
+      parts.day,
+      parts.hour,
+      parts.minute
+    );
+    // Formatted parts have no seconds, so compare against the whole minute
+    const minuteStart = date.getTime() - (date.getTime() % 60000);
+    return (asUtc - minuteStart) / 60000;
+  }
+
+  const el = document.querySelector<HTMLElement>('[data-local-time]');
+  const timeZone = el?.dataset.localTime;
+
+  function update() {
+    if (!el || !timeZone) return;
+    const now = new Date();
+    el.querySelector('[data-time]')!.textContent = new Intl.DateTimeFormat(
+      'en-US',
+      { timeZone, hour: 'numeric', minute: '2-digit' }
+    ).format(now);
+
+    const diffHours =
+      (utcOffset(timeZone, now) + now.getTimezoneOffset()) / 60;
+    el.querySelector('[data-offset]')!.textContent =
+      diffHours === 0
+        ? '// same time'
+        : `// ${Math.abs(diffHours)}h ${diffHours > 0 ? 'ahead' : 'behind'}`;
+  }
+
+  update();
+  setInterval(update, 1000);
+</script>

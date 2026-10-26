@@ -1,8 +1,10 @@
 ---
-company: 'Adveni'
+company: 'Rocchi Group'
 role: 'Full Stack Developer'
+employmentType: 'Contract'
 dateStart: '2024-03-10'
 dateEnd: '2024-09-10'
+logo: '/logos/rocchi-group.jpg'
 ---
 
 - Worked closely with the founders to develop a SaaS application for user analytics and experimentation

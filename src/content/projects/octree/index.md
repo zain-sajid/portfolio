@@ -3,7 +3,7 @@ title: 'Octree'
 description: 'AI LaTeX editor for everyone'
 date: 'May 14 2025'
 demoURL: 'https://www.useoctree.com'
-beta: true
+usesAI: true
 ---
 
 ![Octree](/octree.png)

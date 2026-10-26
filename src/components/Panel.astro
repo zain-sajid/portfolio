@@ -1,0 +1,35 @@
+---
+import { cn } from '@/lib/utils';
+
+type Props = {
+  id?: string;
+  title?: string;
+  class?: string;
+  /** Skip the content padding, for panels that lay out their own rows */
+  flush?: boolean;
+};
+
+const { id, title, class: className, flush } = Astro.props;
+---
+
+<section
+  id={id}
+  class={cn(
+    'screen-line-top screen-line-bottom border-x border-line',
+    className
+  )}
+>
+  {
+    title && (
+      <header class="screen-line-bottom flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 px-4 py-4">
+        <h2 class="text-3xl font-medium tracking-tight text-black dark:text-white">
+          {id ? <a href={`#${id}`}>{title}</a> : title}
+        </h2>
+        <slot name="action" />
+      </header>
+    )
+  }
+  <div class:list={[{ 'p-4': !flush }]}>
+    <slot />
+  </div>
+</section>

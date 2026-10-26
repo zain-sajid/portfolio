@@ -4,9 +4,10 @@ import { SITE } from "@/consts";
 import BackToTop from "@/components/BackToTop.astro";
 import Light from "@/components/icons/Light.astro";
 import Dark from "@/components/icons/Dark.astro";
+import FooterWordmark from "@/components/FooterWordmark.astro";
 ---
 
-<footer class="animate">
+<footer class="animate pb-0">
   <Container>
     <div class="relative">
       <div class="absolute right-0 -top-20">
@@ -15,7 +16,7 @@ import Dark from "@/components/icons/Dark.astro";
     </div>
     <div class="flex justify-between items-center">
       <div>
-        &copy; 2025 {`|`}
+        &copy; {new Date().getFullYear()} {`|`}
         {SITE.NAME}
       </div>
 
@@ -23,21 +24,21 @@ import Dark from "@/components/icons/Dark.astro";
         <button
           id="light-theme-button"
           aria-label="Light theme"
-          class="group size-8 flex items-center justify-center rounded-full"
+          class="group size-8 flex items-center justify-center rounded-full hover-glow transition duration-300"
         >
           <Light />
         </button>
         <button
           id="dark-theme-button"
           aria-label="Dark theme"
-          class="group size-8 flex items-center justify-center rounded-full"
+          class="group size-8 flex items-center justify-center rounded-full hover-glow transition duration-300"
         >
           <Dark />
         </button>
         <button
           id="system-theme-button"
           aria-label="System theme"
-          class="group size-8 flex items-center justify-center rounded-full"
+          class="group size-8 flex items-center justify-center rounded-full hover-glow transition duration-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -57,6 +58,9 @@ import Dark from "@/components/icons/Dark.astro";
           </svg>
         </button>
       </div>
+    </div>
+    <div class="mt-8">
+      <FooterWordmark />
     </div>
   </Container>
 </footer>

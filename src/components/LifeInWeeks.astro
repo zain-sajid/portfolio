@@ -43,7 +43,7 @@ const totalRows = lifeExpectancy;
   <h5 class="font-semibold text-black dark:text-white mb-4">
     My Life in Weeks
   </h5>
-  <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-6">
+  <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
     Each box represents one week of my life. I'm currently <strong
       data-years>{Math.floor(weeksLived / 52)} years old</strong
     >, and if I live to 80, I have about <strong
@@ -147,8 +147,11 @@ const totalRows = lifeExpectancy;
 
   .weeks-grid-wrapper {
     position: relative;
-    padding: 0 0 0 40px;
-    margin-bottom: 20px;
+    width: fit-content;
+    max-width: 100%;
+    /* Right padding mirrors the age-label gutter so the boxes sit on center */
+    padding: 0 40px;
+    margin: 0 auto 20px;
   }
 
   .age-labels {

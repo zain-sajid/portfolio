@@ -29,14 +29,11 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.0
         version: 5.1.5(astro@4.16.19(@types/node@24.13.3)(rollup@4.62.2)(supports-color@7.2.0)(typescript@5.9.3))(tailwindcss@3.4.19(yaml@2.9.0))
+      '@fontsource-variable/geist':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@fontsource-variable/geist-mono':
         specifier: ^5.2.6
-        version: 5.3.0
-      '@fontsource/inter':
-        specifier: ^5.0.17
-        version: 5.3.0
-      '@fontsource/lora':
-        specifier: ^5.0.16
         version: 5.3.0
       '@radix-ui/react-accordion':
         specifier: ^1.2.8
@@ -492,11 +489,8 @@ packages:
   '@fontsource-variable/geist-mono@5.3.0':
     resolution: {integrity: sha512-vBbuwDEo9AkrqADMXOrlAR3DFcJi4/JxeuU43FoiQERnNwsfXNnvxvReZG02cQKmyk4DZkZdBZX3oTDvy2zBAw==}
 
-  '@fontsource/inter@5.3.0':
-    resolution: {integrity: sha512-RofMylZmjlJEfELXeNHFWBRcSs75rGU/6bV2S2jfnvv/3rPXPGe0LgUJTklcHZ9lM4OZmAVFhcJPnACfb91A3g==}
-
-  '@fontsource/lora@5.3.0':
-    resolution: {integrity: sha512-OK1g1z01rHVPqO5aw/FOIoDqc46KKYZdgL3NOLkxLWDk6QhDHhdr/h2BV1cke6gTvR1tzpDfdKyUkGsC+sQLeQ==}
+  '@fontsource-variable/geist@5.3.0':
+    resolution: {integrity: sha512-j0m+vLQuG5XAYoHtGCVu0spvlGreR3EzpECUVzkFmI1mTVnAO38l/NEPDCFgZ177JxzYJCLSmTQibIiYPilGrA==}
 
   '@humanwhocodes/config-array@0.13.0':
     resolution: {integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==}
@@ -4303,9 +4297,7 @@ snapshots:
 
   '@fontsource-variable/geist-mono@5.3.0': {}
 
-  '@fontsource/inter@5.3.0': {}
-
-  '@fontsource/lora@5.3.0': {}
+  '@fontsource-variable/geist@5.3.0': {}
 
   '@humanwhocodes/config-array@0.13.0(supports-color@7.2.0)':
     dependencies:

@@ -1,0 +1,47 @@
+---
+import { SITE } from '@/consts';
+
+// Viewbox units; the text is stretched to exactly this width
+const WIDTH = 1000;
+const FONT_SIZE = 208;
+// Inter Bold's i/j dots reach 0.768em; leave headroom so they aren't clipped
+const BASELINE = Math.round(FONT_SIZE * 0.8);
+const HEIGHT = Math.round(FONT_SIZE * 0.82);
+---
+
+<div class="overflow-hidden text-black dark:text-white" aria-hidden="true">
+  <svg
+    class="block w-full translate-y-[20%]"
+    viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <!-- Tinted at the top, fading into the page toward the cropped bottom -->
+      <linearGradient
+        id="footer-wordmark-fill"
+        x1="0"
+        y1="0"
+        x2="0"
+        y2={HEIGHT}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0" stop-color="currentColor" stop-opacity="0.09"></stop>
+        <stop offset="1" stop-color="currentColor" stop-opacity="0.015"></stop>
+      </linearGradient>
+    </defs>
+    <text
+      x={WIDTH / 2}
+      y={BASELINE}
+      text-anchor="middle"
+      textLength={WIDTH - 4}
+      lengthAdjust="spacingAndGlyphs"
+      font-size={FONT_SIZE}
+      font-weight="700"
+      class="font-sans"
+      fill="url(#footer-wordmark-fill)"
+    >
+      {SITE.NAME}
+    </text>
+  </svg>
+</div>
