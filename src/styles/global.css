@@ -25,12 +25,13 @@ body {
 
 body > header {
   @apply fixed top-0 left-0 right-0 z-50 py-5;
-  @apply bg-background/75 dark:bg-background/50;
+  /* High opacity: backdrop-blur samples past the viewport edge and darkens a more transparent bar */
+  @apply bg-background/90;
   @apply backdrop-blur-sm;
 }
 
 main {
-  @apply flex-1 py-32;
+  @apply flex-1 pt-24 pb-32;
   /* Contain the full-bleed grid lines without horizontal scroll */
   @apply isolate overflow-x-clip;
 }
