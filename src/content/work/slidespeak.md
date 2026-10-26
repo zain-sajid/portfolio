@@ -2,8 +2,9 @@
 company: 'SlideSpeak'
 role: 'Software Engineer'
 dateStart: '2025-06-01'
-dateEnd: 'Present'
+dateEnd: '2026-09-30'
 companyURL: 'https://slidespeak.co'
+logo: '/logos/slidespeak.png'
 ---
 
 - Built end-to-end features and improvements in the core product, including the presentation editor

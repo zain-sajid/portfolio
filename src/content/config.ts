@@ -17,7 +17,11 @@ const work = defineCollection({
     role: z.string(),
     dateStart: z.coerce.date(),
     dateEnd: z.union([z.coerce.date(), z.string()]),
-    companyURL: z.string().optional()
+    companyURL: z.string().optional(),
+    // e.g. 'Contract', 'Working Student'
+    employmentType: z.string().optional(),
+    // Path under public/, e.g. '/logos/ilert.png'
+    logo: z.string().optional()
   })
 });
 

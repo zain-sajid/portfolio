@@ -8,6 +8,10 @@ import { SITE, HOME, SOCIALS } from '@/consts';
 import AccordionDemo from '@/components/AccordionDemo';
 import Arrow from '@/components/icons/Arrow.astro';
 import LifeInWeeks from '@/components/LifeInWeeks.astro';
+import Panel from '@/components/Panel.astro';
+import Separator from '@/components/Separator.astro';
+import Overview from '@/components/Overview.astro';
+import { byRecency } from '@/lib/utils';
 
 const blog = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
@@ -20,11 +24,7 @@ const projects = (await getCollection('projects'))
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
 const allwork = (await getCollection('work'))
-  .sort(
-    (a, b) =>
-      new Date(b.data.dateStart).valueOf() -
-      new Date(a.data.dateStart).valueOf()
-  )
+  .sort(byRecency)
   .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
 
 const work = await Promise.all(
@@ -35,47 +35,48 @@ const work = await Promise.all(
 );
 ---
 
-<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION} flush>
   <Container>
-    <h4 class="animate font-semibold text-black dark:text-white">
-      Hey, I'm Zain <span class="text-xl">👋🏻</span>
-    </h4>
-
-    <div class="space-y-16">
-      <section>
-        <article class="space-y-4">
-          <p class="animate">
-            A product-focused full-stack developer with expertise in React,
-            Node.js, and Next.js. Passionate about crafting innovative products,
-            I bring ideas to life with clean, efficient code. From responsive
-            frontends to robust backends, I strive to build great user
-            experiences on the web.
-          </p>
-        </article>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">Work</h5>
-          <Link href="/work"> See all work </Link>
+    <Panel class="animate">
+      <article>
+        <p>
+          A product-focused full-stack developer with expertise in React,
+          Node.js, and Next.js. Passionate about crafting innovative products,
+          I bring ideas to life with clean, efficient code. From responsive
+          frontends to robust backends, I strive to build great user
+          experiences on the web.
+        </p>
+      </article>
+    </Panel>
+    <div class="animate">
+      <Separator />
+      <Overview />
+    </div>
+    <div class="animate">
+      <Separator />
+      <Panel id="work" title="Work">
+        <Link slot="action" href="/work"> See all work </Link>
+        <div>
+          {
+            work.map((entry, i) => (
+              <AccordionDemo
+                client:visible
+                entry={entry}
+                last={i === work.length - 1}
+              >
+                <article slot="content" class="[&>*]:mt-0">
+                  <entry.Content />
+                </article>
+              </AccordionDemo>
+            ))
+          }
         </div>
-
-        {
-          work.map((entry) => (
-            <AccordionDemo client:visible entry={entry}>
-              <article slot="content" class="[&>*]:mt-0">
-                <entry.Content />
-              </article>
-            </AccordionDemo>
-          ))
-        }
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">Projects</h5>
-          <Link href="/projects"> See all projects </Link>
-        </div>
+      </Panel>
+    </div>
+    <div class="animate">
+      <Separator />
+      <Panel id="projects" title="Projects">
+        <Link slot="action" href="/projects"> See all projects </Link>
         <ul class="flex flex-col gap-4">
           {
             projects.map((project) => (
@@ -85,13 +86,12 @@ const work = await Promise.all(
             ))
           }
         </ul>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">Blogs</h5>
-          <Link href="/blog"> See all blogs </Link>
-        </div>
+      </Panel>
+    </div>
+    <div class="animate">
+      <Separator />
+      <Panel id="blog" title="Blogs">
+        <Link slot="action" href="/blog"> See all blogs </Link>
         <ul class="flex flex-col gap-4">
           {
             blog.map((post) => (
@@ -101,55 +101,60 @@ const work = await Promise.all(
             ))
           }
         </ul>
-      </section>
-
-      <section class="animate space-y-6">
+      </Panel>
+    </div>
+    <div class="animate">
+      <Separator />
+      <Panel>
         <LifeInWeeks birthDate={new Date('2000-12-11')} />
-      </section>
+      </Panel>
+    </div>
+    <div class="animate">
+      <Separator />
+      <Panel id="connect" title="Connect">
+        <div class="space-y-4">
+          <article>
+            <p>
+              If you want to get in touch with me about something or just to say
+              hi, reach out on social media or send me an email.
+            </p>
+          </article>
 
-      <section class="animate space-y-4">
-        <h5 class="font-semibold text-black dark:text-white">Connect</h5>
-        <article>
-          <p>
-            If you want to get in touch with me about something or just to say
-            hi, reach out on social media or send me an email.
-          </p>
-        </article>
+          <a
+            href={SITE.CALL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="relative group w-fit flex pl-3 pr-8 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white hover-glow transition duration-300 ease-in-out"
+          >
+            <div class="text-sm">Book a call</div>
+            <Arrow class="size-4" />
+          </a>
 
-        <a
-          href="https://calendly.com/zainsajid/30min"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="relative group w-fit flex pl-3 pr-8 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
-        >
-          <div class="text-sm">Book a call</div>
-          <Arrow class="size-4" />
-        </a>
-
-        <ul class="flex flex-wrap gap-4">
-          {
-            SOCIALS.map((SOCIAL) => (
-              <li class="text-nowrap">
-                <Link
-                  href={SOCIAL.HREF}
-                  external
-                  aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
-                >
-                  {SOCIAL.NAME}
-                </Link>
-              </li>
-            ))
-          }
-          <li class="line-clamp-1">
-            <Link
-              href={`mailto:${SITE.EMAIL}`}
-              aria-label={`Email ${SITE.NAME}`}
-            >
-              email
-            </Link>
-          </li>
-        </ul>
-      </section>
+          <ul class="flex flex-wrap gap-4">
+            {
+              SOCIALS.map((SOCIAL) => (
+                <li class="text-nowrap">
+                  <Link
+                    href={SOCIAL.HREF}
+                    external
+                    aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
+                  >
+                    {SOCIAL.NAME}
+                  </Link>
+                </li>
+              ))
+            }
+            <li class="line-clamp-1">
+              <Link
+                href={`mailto:${SITE.EMAIL}`}
+                aria-label={`Email ${SITE.NAME}`}
+              >
+                email
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </Panel>
     </div>
   </Container>
 </PageLayout>

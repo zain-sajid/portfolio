@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/banner-dark.png" />
+  <img src=".github/assets/banner-light.png" alt="Zain Sajid · Full-stack developer · Aachen, Germany" width="100%" />
+</picture>
+
 Portfolio website based on Astro Nano theme.
 
 Astro Nano is a static, minimalist, lightweight, lightning fast portfolio and blog theme.

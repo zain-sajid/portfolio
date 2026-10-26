@@ -4,6 +4,7 @@ role: 'Full Stack Developer'
 dateStart: '2022-12-01'
 dateEnd: '2024-01-01'
 companyURL: 'https://studymind.co.uk'
+logo: '/logos/study-mind.png'
 ---
 
 - Responsible for the design, implementation, and deployment of multiple features for an online tutoring

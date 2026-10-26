@@ -9,9 +9,11 @@ import '@fontsource-variable/geist-mono';
 type Props = {
   title: string;
   description: string;
+  /** Start content directly below the fixed header instead of leaving a gap */
+  flush?: boolean;
 };
 
-const { title, description } = Astro.props;
+const { title, description, flush } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,7 +24,7 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <Header />
-    <main>
+    <main class:list={[{ 'pt-16': flush }]}>
       <slot />
     </main>
     <Footer />

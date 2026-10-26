@@ -3,8 +3,11 @@ import type { Site, Metadata, Socials } from '@/types';
 export const SITE: Site = {
   NAME: 'Zain Sajid',
   EMAIL: 'zainsajidnust@gmail.com',
+  LOCATION: 'Aachen, Germany',
+  TIMEZONE: 'Europe/Berlin',
+  CALL_URL: 'https://calendly.com/zainsajid/30min',
   NUM_POSTS_ON_HOMEPAGE: 3,
-  NUM_WORKS_ON_HOMEPAGE: 4,
+  NUM_WORKS_ON_HOMEPAGE: 5,
   NUM_PROJECTS_ON_HOMEPAGE: 3
 };
 

@@ -19,18 +19,20 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-neutral-100 dark:bg-neutral-900;
+  @apply bg-background;
   @apply text-black dark:text-white;
 }
 
-header {
+body > header {
   @apply fixed top-0 left-0 right-0 z-50 py-5;
-  @apply bg-neutral-100/75 dark:bg-neutral-900/50;
+  @apply bg-background/75 dark:bg-background/50;
   @apply backdrop-blur-sm;
 }
 
 main {
   @apply flex-1 py-32;
+  /* Contain the full-bleed grid lines without horizontal scroll */
+  @apply isolate overflow-x-clip;
 }
 
 footer {
@@ -38,65 +40,69 @@ footer {
 }
 
 article {
-  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
-  @apply prose-headings:font-semibold prose-p:font-serif prose-ul:font-serif;
+  @apply max-w-full prose prose-lg prose-zinc dark:prose-invert prose-img:mx-auto prose-img:my-auto;
+  @apply prose-headings:font-semibold;
   @apply prose-headings:text-black prose-headings:dark:text-white;
 }
 
 @layer base {
+  /* shadcn zinc palette, as on chanhdai.com */
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
     --radius: 0.5rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    /* Border blended 64% into the background */
+    --line: 240 5.9% 93.6%;
   }
 
   .dark {
-    --background: 0 0% 3.9%;
+    --background: 240 6% 7%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
+    --card: 240 6% 7%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
+    --popover: 240 6% 7%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --line: 240 4.5% 12.7%;
   }
 }
 
@@ -109,6 +115,52 @@ article {
   article a:hover {
     @apply text-black dark:text-white;
     @apply decoration-black/25 dark:decoration-white/50;
+  }
+
+  /* Hairlines that run the full viewport width, ported from chanhdai.com */
+  .screen-line-top,
+  .screen-line-bottom {
+    @apply relative;
+  }
+  .screen-line-top::before,
+  .screen-line-bottom::after {
+    content: '';
+    @apply absolute left-[-100vw] -z-10 h-px w-[200vw] bg-line;
+  }
+  .screen-line-top::before {
+    @apply top-0;
+  }
+  .screen-line-bottom::after {
+    @apply bottom-0;
+  }
+
+  .diagonal-stripes {
+    background-image: repeating-linear-gradient(
+      315deg,
+      hsl(var(--line) / 0.56) 0,
+      hsl(var(--line) / 0.56) 1px,
+      transparent 0,
+      transparent 50%
+    );
+    background-size: 10px 10px;
+  }
+
+  /* Faint glow hugging the border of clickable buttons; pair with `transition` so it animates */
+  .hover-glow:hover {
+    border-color: rgb(0 0 0 / 0.25);
+    box-shadow: 0 0 4px rgb(0 0 0 / 0.08);
+  }
+  .dark .hover-glow:hover {
+    border-color: rgb(255 255 255 / 0.3);
+    box-shadow: 0 0 4px rgb(255 255 255 / 0.1);
+  }
+
+  .stripe-divider {
+    @apply relative;
+  }
+  .stripe-divider::before {
+    content: '';
+    @apply absolute left-[-100vw] -z-10 h-full w-[200vw] diagonal-stripes;
   }
 }
 
